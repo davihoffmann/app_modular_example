@@ -1,4 +1,4 @@
-# app_slyde_modular_example
+# app_slidy_modular_example
 
 A new Flutter project.
 
