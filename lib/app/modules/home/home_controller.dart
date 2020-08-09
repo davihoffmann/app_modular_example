@@ -1,5 +1,5 @@
+import 'package:app_slyde_modular_example/app/modules/home/repositories/poke_repository.dart';
 import 'package:app_slyde_modular_example/app/shared/models/pokemon_model.dart';
-import 'package:app_slyde_modular_example/app/shared/repositories/poke_repository.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';

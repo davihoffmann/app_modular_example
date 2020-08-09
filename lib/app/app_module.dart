@@ -1,9 +1,7 @@
 import 'package:app_slyde_modular_example/app/app_controller.dart';
 import 'package:app_slyde_modular_example/app/app_widget.dart';
-import 'package:app_slyde_modular_example/app/pages/home/home_controller.dart';
-import 'package:app_slyde_modular_example/app/pages/home/home_page.dart';
+import 'package:app_slyde_modular_example/app/modules/home/home_module.dart';
 import 'package:app_slyde_modular_example/app/pages/other/other_page.dart';
-import 'package:app_slyde_modular_example/app/shared/repositories/poke_repository.dart';
 import 'package:app_slyde_modular_example/app/shared/utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +14,6 @@ class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
-        Bind((i) => HomeController(i.get<PokeRepository>())),
-        Bind((i) => PokeRepository(i.get<Dio>())),
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
       ];
 
@@ -26,10 +22,7 @@ class AppModule extends MainModule {
    */
   @override
   List<Router> get routers => [
-        Router(
-          '/',
-          child: (BuildContext context, ModularArguments args) => HomePage(),
-        ),
+        Router(Modular.initialRoute, module: HomeModule()),
         Router(
           '/other/:text',
           child: (BuildContext context, ModularArguments args) => OtherPage(
